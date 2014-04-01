@@ -17,14 +17,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "docker"
 	
   # Provision docker
-  cmd = <<SCRIPT
-  docker build -t gsogol/elk /workspace/.
-SCRIPT
+  #cmd = <<SCRIPT
+  #docker build -t gsogol/docker-elk /workspace/.
+#SCRIPT
  
-  config.vm.provision :shell, :inline => cmd
+  #config.vm.provision :shell, :inline => cmd
  
   config.vm.provision "docker" do |d|
-    d.run "gsogol/elk", 
-      args: "-v '/workspace:/workspace' -p 80:8080 -p 9200:9200 -p 49021:49021"
+    d.run "gsogol/docker-elk",
+      auto_assign_name: false, 
+      args: "-v '/workspace:/workspace' -p 80:80 -p 9200:9200 -p 49021:49021"
   end
 end
