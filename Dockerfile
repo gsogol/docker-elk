@@ -66,4 +66,4 @@ RUN cd /docker-elk && \
     cp supervisord-kibana.conf /etc/supervisor/conf.d
 
 #80=ngnx, 9200=elasticsearch, 49021=logstash, 9999=udp
-EXPOSE 22 80 9200 49021 9999
+EXPOSE 22 80 9200 49021 9999/udp
