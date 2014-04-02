@@ -17,7 +17,7 @@ CMD ["/usr/bin/supervisord", "-n"]
 
 #SSHD
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server && \
-	mkdir /var/run/sshd && chmod 700 /var/run/sshd \
+	mkdir /var/run/sshd && chmod 700 /var/run/sshd && \
 	echo 'root:root' |chpasswd
 
 #Utilities
