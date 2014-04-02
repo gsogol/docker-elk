@@ -65,5 +65,5 @@ RUN cd /docker-elk && \
     sed -i -e 's|elasticsearch:.*|elasticsearch: "http://"+window.location.hostname + ":" + window.location.port,|' /kibana/config.js && \
     cp supervisord-kibana.conf /etc/supervisor/conf.d
 
-#80=ngnx, 9200=elasticsearch, 49021=logstash
-EXPOSE 22 80 9200 49021
+#80=ngnx, 9200=elasticsearch, 49021=logstash, 9999=udp
+EXPOSE 22 80 9200 49021 9999
