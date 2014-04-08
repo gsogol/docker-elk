@@ -56,13 +56,23 @@ RUN wget https://download.elasticsearch.org/logstash/logstash/logstash-1.4.0.tar
 	tar xf logstash-*.tar.gz && \
     rm logstash-*.tar.gz && \
     mv logstash-* logstash
+    
+#LogGenerator
+RUN git clone https://github.com/vspiewak/log-generator.git && \
+	cd log-generator && \
+	/usr/share/maven/bin/mvn clean package
+
+#Geo
+RUN wget -N http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz && \
+	gunzip GeoLiteCity.dat.gz && \
+    rm GeoLiteCity.dat.gz && \
+    mv GeoLiteCity.dat /log-generator/GeoLiteCity.dat
 
 #Configuration
 ADD ./ /docker-elk
 RUN cd /docker-elk && \
     mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.saved && \
     cp nginx.conf /etc/nginx/nginx.conf && \
-    sed -i -e 's|elasticsearch:.*|elasticsearch: "http://"+window.location.hostname + ":" + window.location.port,|' /kibana/config.js && \
     cp supervisord-kibana.conf /etc/supervisor/conf.d
 
 #80=ngnx, 9200=elasticsearch, 49021=logstash, 9999=udp
