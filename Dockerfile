@@ -63,9 +63,8 @@ RUN git clone https://github.com/vspiewak/log-generator.git && \
 	/usr/share/maven/bin/mvn clean package
 
 #Geo
-RUN wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz && \
-	tar xf GeoLiteCity.dat.gz && \
-    rm GeoLiteCity.dat.gz && \
+RUN wget -N http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz && \
+	gunzip GeoLiteCity.dat.gz && \
     mv GeoLiteCity.dat /log-generator/GeoLiteCity.dat
 
 #Configuration
