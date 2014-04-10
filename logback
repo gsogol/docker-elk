@@ -1,0 +1,2 @@
+LOG_DATE %{MONTHDAY}-%{MONTHNUM}-%{YEAR} %{HOUR}:%{MINUTE}:%{SECOND}.[0-9]{3}
+#LOGBACK_LOG %{LOG_DATE:log_date} [%{NOTSPACE:thread}] %{LOGLEVEL:log_level} %{NOTSPACE:classname} - %{GREEDYDATA:msg}
