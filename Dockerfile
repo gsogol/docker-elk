@@ -72,7 +72,8 @@ ADD ./ /docker-elk
 RUN cd /docker-elk && \
     mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.saved && \
     cp nginx.conf /etc/nginx/nginx.conf && \
-    cp supervisord-kibana.conf /etc/supervisor/conf.d
+    cp supervisord-kibana.conf /etc/supervisor/conf.d && \
+    cp logback /logstash/patterns/logback
 
 #80=ngnx, 9200=elasticsearch, 49021=logstash, 9999=udp
 EXPOSE 22 80 9200 49021 9999/udp
