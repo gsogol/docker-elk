@@ -17,6 +17,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "docker" do |d|
     d.run "gsogol/docker-elk",
       auto_assign_name: false, 
-      args: "-v '/workspace:/workspace' -p 80:80 -p 9200:9200 -p 49021:49021 -p 122:22 -p 9999:9999/udp"
+      args: "-v '/workspace:/workspace' -p 80:80 -p 9200:9200 -p 49021:49021 -p 49022:49022 -p 122:22 -p 9999:9999/udp"
   end
 end

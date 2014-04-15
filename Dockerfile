@@ -73,7 +73,9 @@ RUN cd /docker-elk && \
     mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.saved && \
     cp nginx.conf /etc/nginx/nginx.conf && \
     cp supervisord-kibana.conf /etc/supervisor/conf.d && \
-    cp logback /logstash/patterns/logback
+    cp logback /logstash/patterns/logback && \
+    cp logstash-forwarder.crt /logstash/logstash-forwarder.crt && \
+    cp logstash-forwarder.key /logstash/logstash-forwarder.key
 
-#80=ngnx, 9200=elasticsearch, 49021=logstash, 9999=udp
-EXPOSE 22 80 9200 49021 9999/udp
+#80=ngnx, 9200=elasticsearch, 49021=logstash, 49022=lumberjack, 9999=udp
+EXPOSE 22 80 9200 49021 49022 9999/udp
