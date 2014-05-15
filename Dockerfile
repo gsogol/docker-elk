@@ -12,6 +12,7 @@ RUN	echo '#!/bin/sh\nexit 101' > /usr/sbin/policy-rc.d && \
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get clean
 RUN DEBIAN_FRONTEND=noninteractive apt-get autoclean
+RUN DEBIAN_FRONTEND=noninteractive apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get upgrade
 
 #Supervisord
@@ -25,7 +26,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server && \
 	echo 'root:root' |chpasswd
 
 #Utilities
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -V vim less nano maven ntp net-tools inetutils-ping curl git telnet
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y vim less nano maven ntp net-tools inetutils-ping curl git telnet
 
 #Install Oracle Java 7
 RUN echo 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu precise main' > /etc/apt/sources.list.d/java.list && \
