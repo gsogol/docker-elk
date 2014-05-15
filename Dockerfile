@@ -1,6 +1,6 @@
 #Kibana
 
-FROM ubuntu:14.04
+FROM ubuntu:13.10
  
 RUN echo 'deb http://archive.ubuntu.com/ubuntu precise main universe' > /etc/apt/sources.list && \
     echo 'deb http://archive.ubuntu.com/ubuntu precise-updates universe' >> /etc/apt/sources.list && \
