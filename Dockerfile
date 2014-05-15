@@ -10,7 +10,7 @@ RUN echo 'deb http://archive.ubuntu.com/ubuntu precise main universe' > /etc/apt
 RUN	echo '#!/bin/sh\nexit 101' > /usr/sbin/policy-rc.d && \
     chmod +x /usr/sbin/policy-rc.d
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get clean
+RUN DEBIAN_FRONTEND=noninteractive apt-get update
 
 #Supervisord
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y supervisor && \
